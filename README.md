@@ -25,58 +25,8 @@ Operation
 Dataflow (cout)
 
 Gate-Level (cgate)
-
-
-
-
-
-0
-
-OR  (`a
-
-b`)
-
-`a
-
-b`
-
-or gate
-
-1
-
-AND (a & b)
-
-a & b
-
-and gate
-
-
-
-
-
-2
-
-XOR (a ^ b)
-
-a ^ b
-
-nor gate
-
-
-
-
-
-3
-
-XNOR (~(a ^ b))
-
-~(a ^ b)
-
-nand gate
-
-
-
-
+ 
+we initilaize a and b as input and cgate1,cgate2,cgate3,cgate4 ,cout1,cout2,cout3,cout4 as output;
 
 Testbench Description
 
