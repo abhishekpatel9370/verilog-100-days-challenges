@@ -1,0 +1,31 @@
+4-Bit Priority Generator with Even/Odd Priority
+
+Overview
+
+This project implements a 4-bit Priority Generator that determines the priority based on the parity of the input bits. It classifies the priority into even priority and odd priority using XOR operations.
+
+Features
+
+Accepts a 4-bit input (data_in).
+
+Computes even priority using XOR logic.
+
+Determines odd priority as the complement of even priority.
+
+Implements combinational logic using Verilog.
+
+Module Description
+
+Module Name: priority_gen4bit
+
+Inputs:
+
+data_in [3:0] → 4-bit input data.
+
+Outputs:
+
+even_priority → Outputs 1 if the number of 1s in data_in is even.
+
+odd_priority → Outputs 1 if the number of 1s in data_in is odd (complement of even_priority).
+
+Verilog Code
