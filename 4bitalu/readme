@@ -1,1 +1,60 @@
+# 4-bit Arithmetic Logic Unit (ALU)
+
+## Overview
+This project implements a 4-bit ALU using Verilog, capable of performing basic arithmetic operations such as:
+- Addition
+- Subtraction
+- Multiplication
+- Division
+
+## Features
+- Supports 4-bit operands.
+- Performs Addition, Subtraction, Multiplication, and Division.
+- Outputs the result along with status flags.
+- Uses a selection control signal to determine the operation.
+
+## File Structure
+- `ALU4bit.v` - Verilog code for the ALU.
+- `ALU4bit_tb.v` - Testbench for verification.
+
+## ALU Operations
+| OpCode | Operation    |
+|--------|------------|
+| 00     | Addition    |
+| 01     | Subtraction |
+| 10     | Multiplication |
+| 11     | Division |
+
+## Inputs and Outputs
+### Inputs:
+- `A [3:0]` : First 4-bit operand
+- `B [3:0]` : Second 4-bit operand
+- `OpCode [1:0]` : Selects the arithmetic operation
+
+### Outputs:
+- `Result [3:0]` : 4-bit result of the operation
+- `CarryOut` : Carry flag for addition and multiplication
+- `Zero` : Set if the result is zero
+- `Overflow` : Indicates overflow condition
+- `DivideByZero` : Set if division by zero is attempted
+
+## Simulation & Testing
+1. Compile the Verilog files using a simulator such as ModelSim or Xilinx Vivado.
+2. Run the testbench `ALU4bit_tb.v` to verify the functionality.
+3. Check the waveforms or console output for correctness.
+
+## Tools Used
+- Verilog HDL
+- ModelSim / Vivado for simulation
+- FPGA implementation (optional)
+
+## How to Run
+1. Load the Verilog files into your simulator.
+2. Run the simulation.
+3. Observe the results in waveform or text format.
+
+## Future Enhancements
+- Implement logical operations (AND, OR, XOR, NOT).
+- Extend to an 8-bit ALU.
+- Include shift operations.
 
