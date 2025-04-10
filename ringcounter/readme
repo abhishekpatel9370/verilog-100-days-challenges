@@ -1,0 +1,98 @@
+4-bit Ring Counter
+Overview
+This project implements a 4-bit Ring Counter in Verilog HDL.
+The design takes a 4-bit input initialization value (Cin), and on every rising edge of the clock (clk), it circulates the bits in a ring fashion.
+When reset (rst) is high, the counter loads the input value (Cin) into the counter output (Cout).
+
+Features
+4-bit Ring Counter
+
+Asynchronous or Synchronous Reset Support
+
+Initialization via external 4-bit input (Cin)
+
+Cyclic bit rotation on every clock pulse
+
+Simple and efficient design
+
+Module Interface
+Port	Direction	Width	Description
+clk	Input	1	Clock signal
+rst	Input	1	Reset signal (loads Cin into Cout)
+Cin	Input	4	Initial value to load on reset
+Cout	Output	4	Current counter output
+How It Works
+On the rising edge of the clock or reset:
+
+If reset is active (rst = 1), the counter loads the value of Cin into Cout.
+
+If reset is not active (rst = 0), the counter performs a circular left shift:
+
+The MSB (Cout[3]) rotates back to the LSB.
+
+Example Operation:
+
+If Cin = 4'b0001 and assuming rst was pressed first:
+
+Clock Cycle	Cout
+Reset	0001
+1	0010
+2	0100
+3	1000
+4	0001
+5	0010
+...	...
+Code
+verilog
+Copy
+Edit
+module ringcounter(Cin, Cout, rst, clk);
+    input clk, rst;
+    input [3:0] Cin;
+    output reg [3:0] Cout;
+
+    always @(posedge clk or posedge rst)
+        if (rst)
+            Cout = Cin;
+        else 
+            Cout = {Cout[2:0], Cout[3]};
+endmodule
+How to Simulate
+Create a testbench that:
+
+Applies a reset.
+
+Provides an initial value for Cin.
+
+Releases reset and applies clock pulses.
+
+Observe Cout rotating with each clock cycle.
+
+Example snippet:
+
+verilog
+Copy
+Edit
+initial begin
+    rst = 1; Cin = 4'b0001; clk = 0;
+    #5 rst = 0;
+end
+
+always #5 clk = ~clk; // Clock with 10 time units period
+Requirements
+Verilog HDL support
+
+Simulator like:
+          
+ModelSim
+
+Vivado
+
+Icarus Verilog
+
+EDA Playground (for online simulation)
+
+Improvements (optional ideas)
+Make the design parameterized to support n-bit ring counters.
+
+Add enable signal to control when the counter shifts.
